@@ -1,12 +1,12 @@
 # UserPortal
  
-Userportal is a sample project which is developed by asp.net.Simaple Full Crud Operation Done by Codefirst in this project.
+UserPortal is a sample project which is developed by asp.net. Simple full Crud Operation done by Codefirst in this project.
 
 ## Set up
 
-Set 'Test' Project a statrtup Project. and Run Automatic Create a Db (open Sql Server Manager ang Change Connection string in Web.config in Userportal.Infrastructure)
+Set 'Test' Project a startup Project. and Run then Automatic Create a Db (open Sql Server Manager ang Change Connection string in Web.config in UserPortal.Infrastructure)
 
-Then Userportal set a Startup Project and Run.
+Then UserPortal set a Startup Project and Run.
 
 ## Usage
 
