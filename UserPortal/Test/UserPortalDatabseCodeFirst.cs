@@ -25,7 +25,7 @@ namespace Test
             U.Password = "asw";
             U.UserId = 12;
 
-            Console.WriteLine(_userPortalService.Insert(U));
+             _userPortalService.Insert(U);
         }
     }
 }

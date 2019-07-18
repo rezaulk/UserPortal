@@ -5,8 +5,8 @@ namespace UserPortal.Core.Services.Interfaces
 {
     public interface IUserPortalService
     {
-        bool Insert(User address);
-        bool Update(User address);
+        bool Insert(User user);
+        bool Update(User user);
         bool Delete(int AddressId);
     }
 }
