@@ -3,7 +3,8 @@
 @using UserPortal.Core.Entities
 
 @{
-    List<User> U = ViewBag.User;
+    List<UserModel> U = ViewBag.User;
+    
 }
 
 <!DOCTYPE html>
@@ -27,17 +28,29 @@
         <div class="container-fluid">
             <div class="row" style="border: 1px solid black; height:50px;">
 
-                <div class="col-sm-6"  style="font-size: 30px;"> Navigation</div>
-                <div class="col-sm-6"> U.FirstName</div>
+                <div class="col-sm-6" style="font-size: 30px;"> Navigation</div>
+                <div class="col-md-6">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="color:black; background-color:white;">
+                          Admin
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Account/Logout">Logout</a></li>
+                            
+
+                        </ul>
+                    </div>
+                </div>
 
             </div>
             <div class="row" style="border: 1px solid black">
 
                 <div class="col-sm-3">User List</div>
           
-                <div class="col-sm-7">
+                <div class="col-sm-7" style="border: 1px solid black">
 
-                    <div class="row" style="margin-bottom:20px;">
+                    <div class="row" style="margin-bottom:20px; border: 1px solid black;">
                         <div class="col-sm-6" style="text-align:center">User List</div>
                         <div class="col-sm-6" style="float:right">
                             <div class="input-group md-form form-sm form-1 pl-0">
@@ -48,12 +61,14 @@
 
                     </div>
 
-                    <div class="row" style="padding-top:20px;">
+                    <div class="row" style="padding-top:20px; height:400px;">
 
                         <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th scope="col">First Name</th>
+                                    <th scope="col">Age</th>
+
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone</th>
                                 </tr>
@@ -61,12 +76,13 @@
                             <tbody id="List">
                                 @foreach (var c in U)
                                 {
-                                    <tr>
-                                        <th scope="row">@c.FirstName</th>
-                                        <td>@c.Email</td>
-                                        <td>@c.Phone</td>
+                                <tr>
+                                    <th scope="row">@c.FirstName</th>
+                                    <td>@c.age</td>
+                                    <td>@c.Email</td>
+                                    <td>@c.Phone</td>
 
-                                    </tr>
+                                </tr>
                                 }
 
                             </tbody>

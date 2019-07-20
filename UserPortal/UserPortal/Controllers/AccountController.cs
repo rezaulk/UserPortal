@@ -51,7 +51,7 @@ namespace UserPortal.Controllers
                     }
                     else
                     {
-                        ViewBag.LoginStatus = "Wrong Email Passwoed !!!";
+                        ViewBag.LoginStatus = "Wrong Email Password !!!";
                         return View();
                     }
                    

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UserPortal.Core.Entities;
 using UserPortal.Core.Services.Interfaces;
+using UserPortal.Models;
 
 namespace UserPortal.Controllers
 {
@@ -26,7 +27,24 @@ namespace UserPortal.Controllers
 
             List<User> user = _UserPortalService.GetAllUser();
 
-            ViewBag.User = user;
+            List<UserModel> usermodel = new List<UserModel>();
+
+            foreach( User s in user)
+            {
+                UserModel u = new UserModel();
+
+                u.FirstName = s.FirstName;
+                u.LastName = s.LastName;
+                u.Phone = s.Phone;
+                u.age = Convert.ToInt32(DateTime.Now.Year - s.BirthDate.Year);
+                u.Email = s.Email;
+
+
+                usermodel.Add(u);
+
+            }
+
+            ViewBag.User = usermodel;
             return View();
         }
     }
