@@ -8,8 +8,8 @@ namespace UserPortal.Core.Infrastructure
     {
         public UserPortalDbContext():base("UserPortalDbContext")
         {
-
+            Database.SetInitializer<UserPortalDbContext>(new DropCreateDatabaseIfModelChanges<UserPortalDbContext>());
         }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> users { get; set; }
     }
 }

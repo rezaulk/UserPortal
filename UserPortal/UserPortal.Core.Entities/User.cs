@@ -15,6 +15,6 @@ namespace UserPortal.Core.Entities
 
         public string Password { get; set; }
         public string Email { get; set; }
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
     }
 }

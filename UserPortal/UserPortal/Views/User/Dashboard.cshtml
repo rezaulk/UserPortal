@@ -1,0 +1,137 @@
+﻿@using UserPortal.Models
+@model RegistrationViewModel
+@using UserPortal.Core.Entities
+
+@{
+    User U = ViewBag.User;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+
+ 
+</head>
+<body>
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row" style="border: 1px solid black; height:50px;">
+
+                <div class="col-sm-6" style="font-size: 30px;"> Navigation</div>
+                <div class="col-sm-6" style="text-align:center">
+
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                @U.FirstName
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Account/Logout">Logout</a></li>
+                                <li><a href="ChangePassword">Change Password</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+                <div class="row" style="border: 1px solid black">
+                    <div class="col-sm-3" style="padding-left: 30px;">
+
+                        <div class="row">Profile Page</div>
+                        <div class="row"><a href="ChangePassword"> Password Change  </a></div>
+ 
+                    </div>
+                    <div class="col-sm-7" style="border: 1px solid black;">
+                         
+                        <div class="row" style="margin-bottom:20px;border: 1px solid black;">
+                            <div class="col-sm-12" style="text-align:center">
+                                User Profile
+                            </div>
+                        </div>
+                       
+                           
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+
+                                    <div class="col-sm-10">
+                                        <label>@U.FirstName</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+
+                                    <div class="col-sm-10">
+                                        <label>@U.LastName</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+
+                                    <div class="col-sm-10">
+                                        <label>@U.Address</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
+
+                                    <div class="col-sm-10">
+                                        <label>@U.Phone</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+
+                                    <div class="col-sm-10">
+                                        <label>@U.Email</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">BirthDate:</label>
+                                    <div class="col-sm-10">
+                                        <label>@U.BirthDate</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+
+                                    <div class="col-sm-10">
+                                        <label>@U.Password</label>
+                                    </div>
+                                </div>
+ 
+                      
+
+                    </div>
+
+
+                    <div class="col-sm-2"> </div>
+                </div>
+
+            </div>
+        </div>
+
+</body>
+</html>
+
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $('#RequestDate').datepicker();
+    </script>
+}

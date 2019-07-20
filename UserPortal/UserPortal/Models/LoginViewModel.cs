@@ -52,7 +52,7 @@ namespace UserPortal.Models
 
         [Required] 
         [Display(Name = "BirthDate")]
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }

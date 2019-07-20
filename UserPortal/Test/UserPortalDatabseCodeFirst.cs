@@ -19,7 +19,7 @@ namespace Test
             U.FirstName = "reza";
             U.LastName = "karim";
             U.Address = "Dhaka";
-            U.BirthDate = "12-02-2019";
+            U.BirthDate = Convert.ToDateTime("12-02-2019");
             U.Email = "Reza@gmail.com";
             U.Phone = 12113;
             U.Password = "asw";

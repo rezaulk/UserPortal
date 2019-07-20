@@ -1,6 +1,9 @@
-﻿
+﻿@using UserPortal.Models
+@model RegistrationViewModel
+@using UserPortal.Core.Entities
+
 @{
-    Layout = null;
+    List<User> U = ViewBag.User;
 }
 
 <!DOCTYPE html>
@@ -8,10 +11,136 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>UserList</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+
+
 </head>
 <body>
-    <div> 
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row" style="border: 1px solid black; height:50px;">
+
+                <div class="col-sm-6"  style="font-size: 30px;"> Navigation</div>
+                <div class="col-sm-6"> U.FirstName</div>
+
+            </div>
+            <div class="row" style="border: 1px solid black">
+
+                <div class="col-sm-3">User List</div>
+          
+                <div class="col-sm-7">
+
+                    <div class="row" style="margin-bottom:20px;">
+                        <div class="col-sm-6" style="text-align:center">User List</div>
+                        <div class="col-sm-6" style="float:right">
+                            <div class="input-group md-form form-sm form-1 pl-0">
+
+                                <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" id="Keyword" oninput="LoadItemInfo()">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="padding-top:20px;">
+
+                        <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody id="List">
+                                @foreach (var c in U)
+                                {
+                                    <tr>
+                                        <th scope="row">@c.FirstName</th>
+                                        <td>@c.Email</td>
+                                        <td>@c.Phone</td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+               
+
+                <div class="col-sm-2"> </div>
+            </div>
+
+        </div>
     </div>
+
 </body>
 </html>
+
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $('#RequestDate').datepicker();
+
+
+          function LoadItemInfo() {
+              debugger;
+              $("#List").empty();
+              $(window).scrollTop(0);
+
+              var Keyword = $("#Keyword").val();
+              var json = { Keyword: Keyword };
+                $.ajax({
+                    url: '@Url.Action("GetUserByKeyword", "User")',
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (result) {
+
+                        debugger;
+                        var data="";
+                        $.each(result, function (index, rel) {
+
+                            if(index!=null)
+                            data += "<tr><td>" + rel.FirstName + "</td><td>" + rel.Email + "</td><td>" + rel.Phone + "</td><tr>";
+
+                            
+
+                        });
+
+                        $('#List').html(data);
+                       
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        debugger;
+                    },
+                    complete: function() {
+
+                    }
+                });
+          
+        } 
+
+
+    </script>
+
+
+
+}
